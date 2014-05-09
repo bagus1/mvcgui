@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  modelid: 1
+  schema: MyString
+  tablename: MyString
+  field: MyString
+
+two:
+  modelid: 1
+  schema: MyString
+  tablename: MyString
+  field: MyString

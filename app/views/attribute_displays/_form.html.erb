@@ -1,0 +1,33 @@
+<%= form_for(@attribute_display) do |f| %>
+  <% if @attribute_display.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attribute_display.errors.count, "error") %> prohibited this attribute_display from being saved:</h2>
+
+      <ul>
+      <% @attribute_display.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :attributeid %><br>
+    <%= f.number_field :attributeid %>
+  </div>
+  <div class="field">
+    <%= f.label :format %><br>
+    <%= f.text_field :format %>
+  </div>
+  <div class="field">
+    <%= f.label :action %><br>
+    <%= f.text_field :action %>
+  </div>
+  <div class="field">
+    <%= f.label :header %><br>
+    <%= f.text_field :header %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

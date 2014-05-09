@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attributeDisplayId: 1
+  truncation: 1
+  truncation_format: MyText
+  transformation: MyText
+
+two:
+  attributeDisplayId: 1
+  truncation: 1
+  truncation_format: MyText
+  transformation: MyText

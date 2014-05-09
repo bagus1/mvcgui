@@ -1,0 +1,33 @@
+<h1>Listing attribute_displays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attributeid</th>
+      <th>Format</th>
+      <th>Action</th>
+      <th>Header</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attribute_displays.each do |attribute_display| %>
+      <tr>
+        <td><%= attribute_display.attributeid %></td>
+        <td><%= attribute_display.format %></td>
+        <td><%= attribute_display.action %></td>
+        <td><%= attribute_display.header %></td>
+        <td><%= link_to 'Show', attribute_display %></td>
+        <td><%= link_to 'Edit', edit_attribute_display_path(attribute_display) %></td>
+        <td><%= link_to 'Destroy', attribute_display, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attribute display', new_attribute_display_path %>

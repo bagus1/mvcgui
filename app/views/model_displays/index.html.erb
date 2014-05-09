@@ -1,0 +1,33 @@
+<h1>Listing model_displays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modelid</th>
+      <th>Format</th>
+      <th>Action</th>
+      <th>Header</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @model_displays.each do |model_display| %>
+      <tr>
+        <td><%= model_display.modelid %></td>
+        <td><%= model_display.format %></td>
+        <td><%= model_display.action %></td>
+        <td><%= model_display.header %></td>
+        <td><%= link_to 'Show', model_display %></td>
+        <td><%= link_to 'Edit', edit_model_display_path(model_display) %></td>
+        <td><%= link_to 'Destroy', model_display, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Model display', new_model_display_path %>

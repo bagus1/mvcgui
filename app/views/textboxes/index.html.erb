@@ -1,0 +1,29 @@
+<h1>Listing textboxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attributedisplayid</th>
+      <th>Size</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @textboxes.each do |textbox| %>
+      <tr>
+        <td><%= textbox.attributeDisplayId %></td>
+        <td><%= textbox.size %></td>
+        <td><%= link_to 'Show', textbox %></td>
+        <td><%= link_to 'Edit', edit_textbox_path(textbox) %></td>
+        <td><%= link_to 'Destroy', textbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Textbox', new_textbox_path %>

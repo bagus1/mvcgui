@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Modelid:</strong>
+  <%= @attribute.modelid %>
+</p>
+
+<p>
+  <strong>Schema:</strong>
+  <%= @attribute.schema %>
+</p>
+
+<p>
+  <strong>Tablename:</strong>
+  <%= @attribute.tablename %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @attribute.field %>
+</p>
+
+<%= link_to 'Edit', edit_attribute_path(@attribute) %> |
+<%= link_to 'Back', attributes_path %>

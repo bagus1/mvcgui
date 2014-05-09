@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @records_format.name %>
+</p>
+
+<p>
+  <strong>Classname:</strong>
+  <%= @records_format.classname %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @records_format.type %>
+</p>
+
+<%= link_to 'Edit', edit_records_format_path(@records_format) %> |
+<%= link_to 'Back', records_formats_path %>

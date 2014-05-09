@@ -1,0 +1,71 @@
+
+<h1>
+<%= @modd_display.header %>
+</h1>
+  
+<%=@app_format.app_wrapper.html_safe%>
+  <% if @app_format.separate_header_row %>
+    <%=@app_format.field_header_wrapper.html_safe%>  
+        <% @displayable_attributes.each do | attr_display | %>
+       <%= @app_format.field_header_wrapper.html_safe%>
+       <%  attribute = Attribute.find(attr_display.attributeid) %>
+       <% logger.info 'attribute' + attribute.field.inspect %>
+       <%= sortable  attribute.field %>
+       <%= @app_format.field_header_wrapper_end.html_safe%>
+       <% end %>
+       <% if @app_format.app_format == 'grid' %>
+         <th></th>
+         <th></th>
+         <th></th>
+       <% end %>
+    <%=@app_format.field_header_wrapper_end.html_safe%>
+  <% end %>
+  <% @models.each do |model| %>
+    <%= @app_format.record_wrapper.html_safe%>
+    <% @displayable_attributes.each do | attr_display | %>
+      <% if @app_format.app_format == 'profile_table' %>
+        <tr><th><%=attribute.name=%></th><td>
+      <% end %>
+
+      <%= @app_format.field_wrapper.html_safe%>
+      <%  attribute = Attribute.find(attr_display.attributeid) %>
+      <% logger.info 'model=======' + model.inspect %>
+      <%= model.read_attribute(attribute.field) %>
+      <%= @app_format.field_wrapper_end.html_safe%>
+      <% if @app_format.app_format == 'profile_table' %>
+        </td>
+      <% end %>
+    <% end %>
+    <% if @app_format.app_format == 'grid' %>
+      <td><%= link_to 'Show', model %></td>
+      <td><%= link_to 'Edit', edit_model_path(model) %></td>
+      <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+    <%= @app_format.record_wrapper_end.html_safe%>
+  <% end %>
+<%=@app_format.app_wrapper_end.html_safe%>
+
+
+<%= link_to 'New Model', new_model_path %>
+
+
+<hr>record_format.name:
+<%= @record_format.name %>
+<BR> attribs:
+<% @attributes.each do |attribute| %>
+  <br><%= attribute.field %>
+<% end %>
+
+<hR> attrib id:
+<% @attribute_ids.each do |attribute| %>
+  <br><%= attribute %>
+<% end %>
+<hR> attrib disp:
+<% @attr_displays.each do |attribute| %>
+  <br><%= attribute.header %>
+<% end %>
+
+
+<hR> format:
+
+

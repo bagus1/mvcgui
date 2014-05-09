@@ -1,0 +1,31 @@
+<h1>Listing records_formats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Classname</th>
+      <th>Type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @records_formats.each do |records_format| %>
+      <tr>
+        <td><%= records_format.name %></td>
+        <td><%= records_format.classname %></td>
+        <td><%= records_format.type %></td>
+        <td><%= link_to 'Show', records_format %></td>
+        <td><%= link_to 'Edit', edit_records_format_path(records_format) %></td>
+        <td><%= link_to 'Destroy', records_format, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Records format', new_records_format_path %>

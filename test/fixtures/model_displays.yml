@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  modelid: 1
+  action: MyString
+  function: MyString
+  header: MyString
+
+two:
+  modelid: 1
+  format: MyString
+  action: MyString
+  header: MyString

@@ -1,0 +1,33 @@
+<%= form_for(@textread) do |f| %>
+  <% if @textread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@textread.errors.count, "error") %> prohibited this textread from being saved:</h2>
+
+      <ul>
+      <% @textread.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :attributeDisplayId %><br>
+    <%= f.number_field :attributeDisplayId %>
+  </div>
+  <div class="field">
+    <%= f.label :truncation %><br>
+    <%= f.number_field :truncation %>
+  </div>
+  <div class="field">
+    <%= f.label :truncation_format %><br>
+    <%= f.text_area :truncation_format %>
+  </div>
+  <div class="field">
+    <%= f.label :transformation %><br>
+    <%= f.text_area :transformation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

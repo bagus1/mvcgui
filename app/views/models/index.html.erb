@@ -1,0 +1,63 @@
+
+<h1>
+<%= @modd_display.header %>
+</h1>
+  
+<%=@app_format.app_wrapper.html_safe%>
+  <thead>
+    <tr>
+      <% @displayable_attributes.each do | attr_display | %>
+      <%= @app_format.field_header_wrapper.html_safe%>
+      <%  attribute = Attribute.find(attr_display.attributeid) %>
+      <% logger.info 'attribute' + attribute.field.inspect %>
+      <%= sortable  attribute.field %>
+      <%= @app_format.field_header_wrapper_end.html_safe%>
+      <%  end %>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+      <tr>
+      <% @displayable_attributes.each do | attr_display | %>
+      <%= @app_format.field_wrapper.html_safe%>
+      <%  attribute = Attribute.find(attr_display.attributeid) %>
+      <% logger.info 'model=======' + model.inspect %>
+       <%= model.read_attribute(attribute.field) %>
+      <%= @app_format.field_wrapper_end.html_safe%>
+      <%  end %>
+        <td><%= link_to 'Show', model %></td>
+        <td><%= link_to 'Edit', edit_model_path(model) %></td>
+        <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'New Model', new_model_path %>
+
+
+<hr>record_format.name:
+<%= @record_format.name %>
+<BR> attribs:
+<% @attributes.each do |attribute| %>
+  <br><%= attribute.field %>
+<% end %>
+
+<hR> attrib id:
+<% @attribute_ids.each do |attribute| %>
+  <br><%= attribute %>
+<% end %>
+<hR> attrib disp:
+<% @attr_displays.each do |attribute| %>
+  <br><%= attribute.header %>
+<% end %>
+
+
+<hR> format:
+
+

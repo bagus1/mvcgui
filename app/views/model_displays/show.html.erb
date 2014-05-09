@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Modelid:</strong>
+  <%= @model_display.modelid %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @model_display.format %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @model_display.action %>
+</p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @model_display.header %>
+</p>
+
+<%= link_to 'Edit', edit_model_display_path(@model_display) %> |
+<%= link_to 'Back', model_displays_path %>

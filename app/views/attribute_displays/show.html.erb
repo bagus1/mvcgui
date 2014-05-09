@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attributeid:</strong>
+  <%= @attribute_display.attributeid %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @attribute_display.format %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @attribute_display.action %>
+</p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @attribute_display.header %>
+</p>
+
+<%= link_to 'Edit', edit_attribute_display_path(@attribute_display) %> |
+<%= link_to 'Back', attribute_displays_path %>
