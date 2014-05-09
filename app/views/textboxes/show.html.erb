@@ -1,14 +1,7 @@
-<p id="notice"><%= notice %></p>
+<%#= @textbox.size %>
 
-<p>
-  <strong>Attributedisplayid:</strong>
-  <%= @textbox.attributeDisplayId %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @textbox.size %>
-</p>
-
-<%= link_to 'Edit', edit_textbox_path(@textbox) %> |
-<%= link_to 'Back', textboxes_path %>
+<br><%=text_field_tag(
+	obj.tablename + "[" + displayable_attribute[:attribute].field + "]", 
+	obj.read_attribute(displayable_attribute[:attribute].field), 
+	size: displayable_attribute[:display_format].size 
+	)%>

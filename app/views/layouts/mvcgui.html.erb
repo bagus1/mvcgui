@@ -2,7 +2,8 @@
 <h1>
 <%= @modd_display.header %>
 </h1>
-  
+<%= form_for(@model) do |f|  %>
+
 <%=@app_format.app_wrapper.html_safe%>
   <% if @app_format.separate_header_row %>
     <%=@app_format.field_header_wrapper.html_safe%>  
@@ -18,21 +19,25 @@
       <% end %>
     <%=@app_format.field_header_wrapper_end.html_safe%>
   <% end %>
-  <% @models.each do |model| %>
+  
+<% @models.each do |model| %>
     <%= @app_format.record_wrapper.html_safe%>
     <% @displayable_attributes.each do | displayable_attribute | %>
+
       <% if @app_format.app_format == 'profile_table' %>
         <tr><th><%=displayable_attribute[:attr_display].header %></th><td>
       <% end %>
+
       <%= @app_format.field_wrapper.html_safe%>
-      <%= model.read_attribute(displayable_attribute[:attribute].field) %>
-      <%= displayable_attribute[:attr_display].format %>
 
+      <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: model} %> 
 
-      <%= @app_format.field_wrapper_end.html_safe%>
+      <%= @app_format.field_wrapper_end.html_safe %>
       <% if @app_format.app_format == 'profile_table' %>
         </td>
       <% end %>
+
+
     <% end %>
     <% if @app_format.app_format == 'grid' %>
       <td><%= link_to 'Show', model %></td>
@@ -41,9 +46,10 @@
     <% end %>
     <%= @app_format.record_wrapper_end.html_safe%>
   <% end %>
-<%=@app_format.app_wrapper_end.html_safe%>
 
 
+  <%=@app_format.app_wrapper_end.html_safe%>
+  <% end %>
 <%= link_to 'New Model', new_model_path %>
 
 <pre>

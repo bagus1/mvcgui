@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attributedisplayid:</strong>
+  <%= @textread.attributeDisplayId %>
+</p>
+
+<p>
+  <strong>Truncation:</strong>
+  <%= @textread.truncation %>
+</p>
+
+<p>
+  <strong>Truncation format:</strong>
+  <%= @textread.truncation_format %>
+</p>
+
+<p>
+  <strong>Transformation:</strong>
+  <%= @textread.transformation %>
+</p>
+
+<%= link_to 'Edit', edit_textread_path(@textread) %> |
+<%= link_to 'Back', textreads_path %>

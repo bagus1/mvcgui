@@ -2,7 +2,6 @@
   <% if @attribute_display.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@attribute_display.errors.count, "error") %> prohibited this attribute_display from being saved:</h2>
-
       <ul>
       <% @attribute_display.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

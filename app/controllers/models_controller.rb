@@ -17,12 +17,14 @@ class ModelsController < ApplicationController
       attribute = Attribute.find(attr_display.attributeid)
       if is_displayable?(attr_display.format)
         #lets figure out how to display it right here.
-        display_format = attr_display.format
         display_format = Object.const_get(attr_display.format.classify).by_attribute_display_id(attr_display.id).last
-        @displayable_attributes << {:attr_display=>attr_display, :attribute=>attribute, :display_format_obj=>display_format}
+        logger.info "daa>>>>>>>>>>>>>>>>>>>>"  + display_format.inspect
+        @displayable_attributes << {:attr_display=>attr_display, :attribute=>attribute, :display_format=>display_format, :obj=>@model}
       end
     end
-    logger.info "da>>>>>>>>>>>>>>>>>>>>>"  + @displayable_attributes.to_s
+    logger.info
+    logger.info
+    logger.info "dc>>>>>>>>>>>>>>>>>>>>"  + @displayable_attributes.to_s
 
     @modd_display = ModelDisplay.by_model(@modelid).by_action(params[:action]).last
 
