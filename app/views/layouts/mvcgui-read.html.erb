@@ -1,0 +1,13 @@
+
+<h1><%= @modd_display.header %></h1>
+<%=url_for(Model) %>
+<BR>FP: <%#=@form_path%>
+
+<% 
+if ['index', 'show'].include? params[:action] do
+ partial "mvcgui-read" 
+else 
+  partial "mvcgui-read" 
+end
+%>
+

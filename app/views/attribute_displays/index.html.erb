@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Attributeid</th>
       <th>Format</th>
       <th>Action</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @attribute_displays.each do |attribute_display| %>
       <tr>
+        <td><%= attribute_display.id %></td>
         <td><%= attribute_display.attributeid %></td>
         <td><%= attribute_display.format %></td>
         <td><%= attribute_display.action %></td>

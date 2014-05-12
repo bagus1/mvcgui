@@ -1,4 +1,4 @@
-ActiveAdmin.register AttributeDisplay, as: "Attr Display" do
+ActiveAdmin.register AttributeDisplay do
 
   
   # See permitted parameters documentation:
@@ -7,6 +7,7 @@ ActiveAdmin.register AttributeDisplay, as: "Attr Display" do
   # permit_params :list, :of, :attributes, :on, :model
   permit_params :attributeid,  :format, :action, :header, :created_at, :updated_at
 
+  #
   # or
   #
   # permit_params do

@@ -1,0 +1,54 @@
+<%= form_for(@model) do |f| %>
+
+  <%=@app_format.app_wrapper.html_safe%>
+  <%= @app_format.record_wrapper.html_safe%>
+  <% @displayable_attributes.each do | displayable_attribute | %>
+  beep
+    <% if @app_format.app_format == 'profile_table' %>
+      <tr><th><%=displayable_attribute[:attr_display].header %></th>
+    <% end %>
+    <%= @app_format.field_wrapper.html_safe%>
+    <% #logger.info 'forforforforfor' + @model.inspect %>
+    <% logger.info 'gggggggggg ' + displayable_attribute.inspect %>
+    <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: @model, mvcgui: @mvcgui} %>
+    <%= @app_format.field_wrapper_end.html_safe %>
+  <%end %>
+  <%= @app_format.record_wrapper_end.html_safe%>
+  <tr><th>Save</th><td><%= submit_tag %></td><th></tr>
+  <%=@app_format.app_wrapper_end.html_safe%>
+<% end %>
+<%= link_to 'New Model', new_model_path %>
+
+
+
+
+
+
+
+<pre>
+
+
+
+
+
+</pre>
+<hr>record_format.name:
+<%= @record_format.name %>
+<BR> attribs:
+<% @attributes.each do |attribute| %>
+  <br><%= attribute.field %>
+<% end %>
+
+<hR> attrib id:
+<% @attribute_ids.each do |attribute| %>
+  <br><%= attribute %>
+<% end %>
+<hR> attrib disp:
+<% @attr_displays.each do |attribute| %>
+  <br><%= attribute.header %>
+<% end %>
+
+
+<hR> format:
+
+
