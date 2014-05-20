@@ -1,11 +1,16 @@
 class ModelDisplaysController < ApplicationController
-  before_action :set_model_display, only: [:show, :edit, :update, :destroy]
+  include MvcguiConcern
+  layout  "mvcgui"
+  helper_method :sort_column, :sort_direction, :is_displayable
+  before_action :app_init
+  before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
+  before_action :set_model, only: [:show, :edit, :update, :destroy]
+  
 
+
+  before_action :set_model_display, only: [:show, :edit, :update, :destroy]
   # GET /model_displays
   # GET /model_displays.json
-  def index
-    @model_displays = ModelDisplay.all
-  end
 
   # GET /model_displays/1
   # GET /model_displays/1.json
@@ -65,7 +70,9 @@ class ModelDisplaysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_model_display
+      abort('i aborted')
       @model_display = ModelDisplay.find(params[:id])
+      #testing
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
