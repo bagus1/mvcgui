@@ -1,11 +1,16 @@
 class ModelsController < ApplicationController
   helper_method :sort_column, :sort_direction, :is_displayable
+  before_action :init1
   before_action :set_model, only: [:show, :edit, :update, :destroy]
   before_action :init,  only: [:index, :show, :edit, :new]
+  #before_action :app_init,  only: [:index, :show, :edit, :new]
+  
   layout  "mvcgui"
+  def init1
+    app_init1
+  end
   def init
-    @the_class = params[:controller].to_s.classify.constantize
-    booter = @the_class.new
+    app_init(1)
     #logger.info "boooter " +booter.inspect
     @modelid = 1
     @attributes =  Attribute.by_model(@modelid)
@@ -59,18 +64,19 @@ class ModelsController < ApplicationController
 
   # GET /models/new
   def new
-    @model= Model.new
+    @model= @the_class.new
   end
 
   # GET /models/1/edit
   def edit
-    @models = Model.by_model(params[:id])
+    @models = @the_class.by_model(params[:id])
   end
 
   # POST /models
   # POST /models.json
   def create
-    @model = Model.new(model_params)
+
+    @model = @the_class.new(model_params)
     respond_to do |format|
       if @model.save
         format.html { redirect_to @model, notice: 'Model was successfully created.' }
@@ -85,14 +91,10 @@ class ModelsController < ApplicationController
   # PATCH/PUT /models/1
   # PATCH/PUT /models/1.json
   def update
-     logger.info "setsetsetset " + @model.inspect
-     bob = params.permit(:model, :classname, :schema, :tablename, :name)
-     logger.info "setsetsetset222 " + bob.inspect
- 
     respond_to do |format|
       if @model.update(model_params)
         logger.info "UUUUUUUUUU"
-        format.html { redirect_to @model, notice: 'Model was successfully updated.' }
+        format.html { redirect_to @model, notice: 'Thing was successfully updated.' }
         format.json { head :no_content }
       else
          logger.info "FffFFFFFFFF"
@@ -115,7 +117,7 @@ class ModelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_model
-      @model = Model.find(params[:id])
+      @model = @the_class.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -125,12 +127,11 @@ class ModelsController < ApplicationController
     end
 
     def sort_column
-      Model.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      @the_class.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
-
 
     def is_displayable?(format)
       if format == 'hidden' || format == 'off'

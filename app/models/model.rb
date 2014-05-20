@@ -1,7 +1,7 @@
 class Model < ActiveRecord::Base
 	attr_accessor :modelid
 
-	has_many :attributes
+	#has_many :attributes #ack you can't do this!  http://reservedwords.herokuapp.com/words/attributes
 	attr_writer :modelid
 	scope :by_model, ->(modelid) { where(id: modelid) if modelid.present? }
 	#after_initialize :set_modelid
