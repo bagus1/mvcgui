@@ -1,3 +1,4 @@
+
 <%= form_tag @form_path do |f| %>
   <%=@app_format.app_wrapper.html_safe%>
   <% if @app_format.separate_header_row %>
@@ -7,7 +8,7 @@
       <%= @app_format.field_header_wrapper_end.html_safe%>
     <% end %>
   <% end %>
-  <% #logger.info 'dfdsdfisninininin' + @models.inspect %>
+  <% logger.info 'dfdsdfisninininin' + @models.inspect %>
   
 
   <% @models.each do |model| %>
@@ -17,23 +18,27 @@
         <tr><th><%=displayable_attribute[:attr_display].header %></th><td>
       <% end %>
       <%= @app_format.field_wrapper.html_safe%>
-      <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: model} %>
+      <%# logger.info "bkkkkbkbkbkbkbkbkbkbkbk " + model.inspect %>
+     <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: model} %>
       <%= @app_format.field_wrapper_end.html_safe %>
       <% if @app_format.app_format == 'profile_table' %>
         </td>
       <% end %>
     <% end %>
     <% if @app_format.app_format == 'grid' %>
-      <td><%= link_to 'Show', model %></td>
-      <td><%= link_to 'Edit', edit_model_path(model) %></td>
-      <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%# abort(model.inspect) %>
+
+      <td><%= link_to 'Show', get_path('show', model.id) %></td>
+      <td><%= link_to 'Edit', get_path('edit', model.id) %></td>
+      <td>destroy...<%#= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
     <%= @app_format.record_wrapper_end.html_safe%>
   <% end %>
   <%= submit_tag %>
   <%=@app_format.app_wrapper_end.html_safe%>
 <% end %>
-<%= link_to 'New Model', new_model_path %>
+
+<%#= link_to 'New', get_path('new') %>
 
 
 

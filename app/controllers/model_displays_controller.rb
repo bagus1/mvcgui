@@ -4,16 +4,14 @@ class ModelDisplaysController < ApplicationController
   helper_method :sort_column, :sort_direction, :is_displayable
   before_action :app_init
   before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
-  before_action :set_model, only: [:show, :edit, :update, :destroy]
-  
-
-
   before_action :set_model_display, only: [:show, :edit, :update, :destroy]
   # GET /model_displays
   # GET /model_displays.json
 
   # GET /model_displays/1
   # GET /model_displays/1.json
+
+
   def show
   end
 

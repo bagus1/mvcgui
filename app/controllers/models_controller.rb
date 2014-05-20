@@ -6,8 +6,6 @@ class ModelsController < ApplicationController
   before_action ->{ myinit 1 },  only: [:index, :show, :edit, :new]
   before_action :set_model, only: [:show, :edit, :update, :destroy]
   #before_action :app_init,  only: [:index, :show, :edit, :new]
-  
-
 
   # GET /models/1
   # GET /models/1.json
@@ -76,16 +74,6 @@ class ModelsController < ApplicationController
     def model_params
       #      params.require(:model).permit(:model:classname, :schema, :tablename, :name)
       params.require(:model).permit(:classname, :schema, :tablename, :name)
-    end
-
-
-    def is_displayable?(format)
-      if format == 'hidden' || format == 'off'
-        false
-      else
-      logger.info "is_displayable" + format
-        true
-      end
     end
 
 end

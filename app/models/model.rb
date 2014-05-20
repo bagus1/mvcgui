@@ -1,5 +1,13 @@
 class Model < ActiveRecord::Base
+	include MvcguiModelConcern
 	attr_accessor :modelid
+  
+
+  def tester(action = nil)
+  	abort('beep')
+    logger.info ("NEW PATHJ "  + self.get_path('new'))
+  end
+
 
 	#has_many :attributes #ack you can't do this!  http://reservedwords.herokuapp.com/words/attributes
 	attr_writer :modelid

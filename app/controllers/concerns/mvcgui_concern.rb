@@ -4,9 +4,15 @@ module MvcguiConcern
     # GET /models
     # GET /models.json
     def index
-        @models = @the_class.order(sort_column + ' ' + sort_direction)
-        logger.info "indexxxxxxxxxxxxxxxxx" + @models.inspect
-        
+        #seems like you have to have an instance variable for the specific model because if you don't it doesn't pay attention to using your 'layout'
+        #so we set one but then for convenience in the layout, we set @models equal to that.
+        instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
+        @models = instance_variable_get("@" + params[:controller].to_s);
+    end
+
+    def set_the_display
+        instance_variable_set("@" + params[:controller].to_s,  @the_class.find(params[:id]))
+        @model = instance_variable_get("@" + params[:controller].to_s);
     end
 
     def testing
@@ -15,11 +21,12 @@ module MvcguiConcern
     end
 
     def app_init
+        #the crazyness starts right here.
         @the_class = params[:controller].to_s.classify.constantize
     end
 
     def myinit(mid)
-        #logger.info "boooter " +booter.inspect
+        logger.info "boooter " +self.get_path
         @modelid = mid
         @attributes =  Attribute.by_model(@modelid)
         unless @attributes
@@ -29,6 +36,7 @@ module MvcguiConcern
         @attributes.each do |att|
           @attribute_ids << att.id
         end 
+        logger.info 'attr_ ids    ' + @attribute_ids.inspect
         @attr_displays = AttributeDisplay.by_attribs(@attribute_ids).by_action(params[:action])
         logger.info 'attr_displays' + @attr_displays.inspect
         @displayable_attributes = []
@@ -58,9 +66,10 @@ module MvcguiConcern
         #get_path?(Model)
        
         #logger.info "iididididididididdidi " + @form_path
-  end
+    end
 
-  def get_path
+    def get_path
+        #abort (' params[:controller].to_s ' +  params[:controller].to_s)
       case params[:action]
       when 'index' 
         url_for(controller: params[:controller].to_s,
@@ -86,4 +95,12 @@ module MvcguiConcern
     end
 
 
+    def is_displayable?(format)
+      if format == 'hidden' || format == 'off'
+        false
+      else
+      logger.info "is_displayable" + format
+        true
+      end
+    end
 end
