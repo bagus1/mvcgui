@@ -6,10 +6,25 @@ module MvcguiConcern
     def index
         #seems like you have to have an instance variable for the specific model because if you don't it doesn't pay attention to using your 'layout'
         #so we set one but then for convenience in the layout, we set @models equal to that.
+
+        #sorting!
+        #instance_variable_set("@" + params[:controller].to_s,  @the_class.order(sort_column + " " + sort_direction))
+        
         instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
         @models = instance_variable_get("@" + params[:controller].to_s);
     end
 
+    def new
+        #abort("@" + params[:controller].to_s)
+        instance_variable_set("@" + params[:controller].to_s.singularize,  @the_class.new)
+        @model = instance_variable_get("@" + params[:controller].to_s.singularize);  
+    end
+
+    def edit
+        #abort("@" + params[:controller].to_s)
+        instance_variable_set("@" + params[:controller].to_s.singularize,  @the_class.find(params[:id]))
+        @model = instance_variable_get("@" + params[:controller].to_s.singularize);  
+    end
     def set_the_display
         instance_variable_set("@" + params[:controller].to_s,  @the_class.find(params[:id]))
         @model = instance_variable_get("@" + params[:controller].to_s);
@@ -87,13 +102,13 @@ module MvcguiConcern
        form_path = 'ack'
       end
     end 
+
     def sort_column
       @the_class.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
-
 
     def is_displayable?(format)
       if format == 'hidden' || format == 'off'

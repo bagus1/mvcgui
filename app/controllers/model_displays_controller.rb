@@ -3,26 +3,13 @@ class ModelDisplaysController < ApplicationController
   layout  "mvcgui"
   helper_method :sort_column, :sort_direction, :is_displayable
   before_action :app_init
-  before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
   before_action :set_model_display, only: [:show, :edit, :update, :destroy]
-  # GET /model_displays
-  # GET /model_displays.json
-
-  # GET /model_displays/1
-  # GET /model_displays/1.json
-
+  before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
+  
 
   def show
   end
 
-  # GET /model_displays/new
-  def new
-    @model_display = ModelDisplay.new
-  end
-
-  # GET /model_displays/1/edit
-  def edit
-  end
 
   # POST /model_displays
   # POST /model_displays.json
@@ -68,8 +55,8 @@ class ModelDisplaysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_model_display
-      abort('i aborted')
-      @model_display = ModelDisplay.find(params[:id])
+            @model = ModelDisplay.find(params[:id])
+
       #testing
     end
 

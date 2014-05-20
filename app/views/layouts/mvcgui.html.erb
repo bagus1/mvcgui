@@ -7,3 +7,37 @@
  <%= render partial: "layouts/mvcgui_write" %>
 <% end%>
 
+
+<%= link_to 'New', get_path('new') %>
+
+
+
+
+
+<pre>
+
+
+
+
+
+</pre>
+<hr>record_format.name:
+<%= @record_format.name %>
+<BR> attribs:
+<% @attributes.each do |attribute| %>
+  <br><%= attribute.field %>
+<% end %>
+
+<hR> attrib id:
+<% @attribute_ids.each do |attribute| %>
+  <br><%= attribute %>
+<% end %>
+<hR> attrib disp:
+<% @attr_displays.each do |attribute| %>
+  <br><%= attribute.header %>
+<% end %>
+
+
+<hR> format:
+
+

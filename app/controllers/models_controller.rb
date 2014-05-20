@@ -13,9 +13,7 @@ class ModelsController < ApplicationController
   end
 
   # GET /models/new
-  def new
-    @model= @the_class.new
-  end
+
 
   # GET /models/1/edit
   def edit

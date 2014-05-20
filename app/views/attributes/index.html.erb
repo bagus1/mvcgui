@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Modelid</th>
+      <th>id</th>
+       <th>Modelid</th>
       <th>Schema</th>
       <th>Tablename</th>
       <th>Field</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @attributes.each do |attribute| %>
       <tr>
+        <td><%= attribute.id %></td>
         <td><%= attribute.modelid %></td>
         <td><%= attribute.schema %></td>
         <td><%= attribute.tablename %></td>

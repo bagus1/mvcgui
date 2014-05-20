@@ -8,8 +8,6 @@
       <%= @app_format.field_header_wrapper_end.html_safe%>
     <% end %>
   <% end %>
-  <% logger.info 'dfdsdfisninininin' + @models.inspect %>
-  
 
   <% @models.each do |model| %>
     <%= @app_format.record_wrapper.html_safe%>
@@ -37,39 +35,3 @@
   <%= submit_tag %>
   <%=@app_format.app_wrapper_end.html_safe%>
 <% end %>
-
-<%#= link_to 'New', get_path('new') %>
-
-
-
-
-
-
-
-<pre>
-
-
-
-
-
-</pre>
-<hr>record_format.name:
-<%= @record_format.name %>
-<BR> attribs:
-<% @attributes.each do |attribute| %>
-  <br><%= attribute.field %>
-<% end %>
-
-<hR> attrib id:
-<% @attribute_ids.each do |attribute| %>
-  <br><%= attribute %>
-<% end %>
-<hR> attrib disp:
-<% @attr_displays.each do |attribute| %>
-  <br><%= attribute.header %>
-<% end %>
-
-
-<hR> format:
-
-
