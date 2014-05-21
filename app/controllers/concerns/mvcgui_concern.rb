@@ -8,9 +8,10 @@ module MvcguiConcern
         #so we set one but then for convenience in the layout, we set @models equal to that.
 
         #sorting!
-        #instance_variable_set("@" + params[:controller].to_s,  @the_class.order(sort_column + " " + sort_direction))
+        #abort(sort_column)
+        instance_variable_set("@" + params[:controller].to_s,  @the_class.order(sort_column + " " + sort_direction))
         
-        instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
+        #instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
         @models = instance_variable_get("@" + params[:controller].to_s);
     end
 
@@ -43,6 +44,7 @@ module MvcguiConcern
     def myinit(mid)
         logger.info "boooter " +self.get_path
         @modelid = mid
+        @model_properties = Model.find(mid)
         @attributes =  Attribute.by_model(@modelid)
         unless @attributes
           return redirect_to(new_attribute_display_path, :notice => "There was no ModelDisplay for that action/format combo. Would you like to create one?")  
@@ -77,7 +79,18 @@ module MvcguiConcern
         @app_format = Object.const_get(@record_format.name).new
         #@app_format = GridHtml.new  
         @form_path = get_path()
-        @mvcgui = {:model_display => @modd_display, :record_format => @record_format, :app_format=>@app_format }
+        @mvcgui = {
+                :app_format=>@app_format, 
+                :attribute_ids => @attribute_ids,
+                :attributes => @attributes,
+                :attribute_displays => @attr_displays,
+                :displayable_attributes => @displayable_attributes,
+                :form_path =>@form_path,
+                :modelid =>@modelid,
+                :model_display => @modd_display, 
+                :model_properties =>@model_properties,
+                :record_format => @record_format
+                 }
         #get_path?(Model)
        
         #logger.info "iididididididididdidi " + @form_path
@@ -104,7 +117,8 @@ module MvcguiConcern
     end 
 
     def sort_column
-      @the_class.column_names.include?(params[:sort]) ? params[:sort] : "name"
+#        abort("sort sort sort sort" + @mvcgui[:model_properties][:default_sort_field])
+      @the_class.column_names.include?(params[:sort]) ? params[:sort] :  @mvcgui[:model_properties][:default_sort_field]
     end
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'

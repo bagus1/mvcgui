@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def get_path(action = nil, id = nil)
   	
-            action ||= params[:action]
+        action ||= params[:action]
   	#abort(action + "..." + id)
   	          case action
             when 'index' #untested
@@ -24,7 +24,7 @@ module ApplicationHelper
             when 'edit'  #untested
                 url_for(controller: params[:controller].to_s,
                 action:  'edit',
-                :id=>id,
+                :id=>id,#catch errors
                 only_path: true)
             when 'show'  #untested
                 url_for(controller: params[:controller].to_s,

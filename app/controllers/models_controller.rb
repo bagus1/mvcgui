@@ -13,8 +13,6 @@ class ModelsController < ApplicationController
   end
 
   # GET /models/new
-
-
   # GET /models/1/edit
   def edit
     @models = @the_class.by_model(params[:id])
@@ -23,7 +21,6 @@ class ModelsController < ApplicationController
   # POST /models
   # POST /models.json
   def create
-
     @model = @the_class.new(model_params)
     respond_to do |format|
       if @model.save
@@ -71,7 +68,7 @@ class ModelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def model_params
       #      params.require(:model).permit(:model:classname, :schema, :tablename, :name)
-      params.require(:model).permit(:classname, :schema, :tablename, :name)
+      params.require(:model).permit(:classname, :schema, :tablename, :name, :default_sort_field)
     end
 
 end

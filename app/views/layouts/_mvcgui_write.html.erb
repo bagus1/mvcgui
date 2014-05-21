@@ -17,38 +17,3 @@
   <tr><th>Save</th><td><%= submit_tag %></td><th></tr>
   <%=@app_format.app_wrapper_end.html_safe%>
 <% end %>
-<%= link_to 'New Model', new_model_path %>
-
-
-
-
-
-
-
-<pre>
-
-
-
-
-
-</pre>
-<hr>record_format.name:
-<%= @record_format.name %>
-<BR> attribs:
-<% @attributes.each do |attribute| %>
-  <br><%= attribute.field %>
-<% end %>
-
-<hR> attrib id:
-<% @attribute_ids.each do |attribute| %>
-  <br><%= attribute %>
-<% end %>
-<hR> attrib disp:
-<% @attr_displays.each do |attribute| %>
-  <br><%= attribute.header %>
-<% end %>
-
-
-<hR> format:
-
-

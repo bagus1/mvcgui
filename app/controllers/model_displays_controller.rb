@@ -1,11 +1,13 @@
 class ModelDisplaysController < ApplicationController
   include MvcguiConcern
   layout  "mvcgui"
-  helper_method :sort_column, :sort_direction, :is_displayable
+  helper_method :sort_column
+  helper_method :sort_direction, :is_displayable
   before_action :app_init
   before_action :set_model_display, only: [:show, :edit, :update, :destroy]
   before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
-  
+  @default_sort = 'modelid'
+
 
   def show
   end

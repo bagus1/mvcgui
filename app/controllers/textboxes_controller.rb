@@ -1,4 +1,3 @@
-
 class TextboxesController < ApplicationController
   before_action :set_textbox, only: [:show, :edit, :update, :destroy]
   attr_accessor :attributeDisplayId, :size
