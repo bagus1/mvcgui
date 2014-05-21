@@ -1,4 +1,15 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mvcgui</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
 <h1><%= @modd_display.header %></h1>
 
 <%if ['index', 'show'].include? params[:action]%>
@@ -39,5 +50,9 @@
 
 
 <hR> format:
+
+
+</body>
+</html>
 
 

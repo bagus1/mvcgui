@@ -6,13 +6,14 @@ module MvcguiConcern
     def index
         #seems like you have to have an instance variable for the specific model because if you don't it doesn't pay attention to using your 'layout'
         #so we set one but then for convenience in the layout, we set @models equal to that.
-
-        #sorting!
-        #abort(sort_column)
         instance_variable_set("@" + params[:controller].to_s,  @the_class.order(sort_column + " " + sort_direction))
-        
         #instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
         @models = instance_variable_get("@" + params[:controller].to_s);
+    end
+    def show
+        instance_variable_set("@" + params[:controller].to_s.singularize,  @the_class.find(params[:id]))
+        @models = []
+        @models << instance_variable_get("@" + params[:controller].to_s.singularize);  
     end
 
     def new
@@ -26,6 +27,46 @@ module MvcguiConcern
         instance_variable_set("@" + params[:controller].to_s.singularize,  @the_class.find(params[:id]))
         @model = instance_variable_get("@" + params[:controller].to_s.singularize);  
     end
+
+    def create
+        @model = @the_class.new(_params)
+        respond_to do |format|
+          if @model.save
+            format.html { redirect_to @model, notice: 'It was successfully created.' }
+            format.json { render action: 'show', status: :created, location: @model }
+          else
+            format.html { render action: 'new' }
+            format.json { render json: @model.errors, status: :unprocessable_entity }
+          end
+        end
+    end
+          # PATCH/PUT /models/1
+      # PATCH/PUT /models/1.json
+    def update
+        set_the_display
+        respond_to do |format|
+          if @model.update(_params)
+            logger.info "UUUUUUUUUU"
+            format.html { redirect_to @model, notice: 'Thing was successfully updated.' }
+            format.json { head :no_content }
+          else
+             logger.info "FffFFFFFFFF"
+            format.html { render action: 'edit' }
+            format.json { render json: @model.errors, status: :unprocessable_entity }
+          end
+        end
+      end
+    def destroy
+        instance_variable_set("@" + params[:controller].to_s.singularize,  @the_class.find(params[:id]))
+        @model = instance_variable_get("@" + params[:controller].to_s.singularize); 
+        @model.destroy
+        respond_to do |format|
+            format.html { redirect_to models_url }
+            format.json { head :no_content }
+        end
+    end
+
+
     def set_the_display
         instance_variable_set("@" + params[:controller].to_s,  @the_class.find(params[:id]))
         @model = instance_variable_get("@" + params[:controller].to_s);
