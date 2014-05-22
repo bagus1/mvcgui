@@ -13,4 +13,10 @@ We need a generator that kicks off when a model is created, along with tools to 
 
 Also, it'd be nice to be able to see lists of model_displays and fields when you are show a single model record.
 
+Plus it's an ongoing project to optimize the little bit of code written already. Before we build more, we make sure its perfect at its core.
+
+After that... we'll think about how to transition this to a Gem.
+
+
+
 
