@@ -6,7 +6,7 @@ def instantiate
 	@field_header_wrapper = '<th>'
 	@field_header_wrapper_end =  '</th>'
 	@record_wrapper = '<tr>'
-	@record_wrapper_end = '<th>'
+	@record_wrapper_end = '</tr>'
 	@field_wrapper = '<td>'
 	@field_wrapper_end = '</td>'
 	@header_row = true

@@ -1,7 +1,7 @@
 <%#= @textbox.size %>
-<% logger.info "bbbnbnbnbnbnbnbnbnbnbbbbb  " + displayable_attribute.inspect %>
+<% logger.info "bbbnbnbnbnbnbnbnbnbnbbbbb  " + displayable_field.inspect %>
 <br><%=text_field_tag(
-	displayable_attribute[:attribute].tablename.singularize + "[" + displayable_attribute[:attribute].field + "]", 
-	obj.read_attribute(displayable_attribute[:attribute].field), 
-	size: displayable_attribute[:display_format].size 
+	displayable_field[:field].tablename.singularize + "[" + displayable_field[:field].field + "]", 
+	obj.read_attribute(displayable_field[:field].field), 
+	size: displayable_field[:display_format].size 
 	)%>

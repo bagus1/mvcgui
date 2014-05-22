@@ -8,15 +8,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= link_to 'Models', models_path %> | <%= link_to 'Fields', fields_path %> | <%= link_to 'Model Displays', model_displays_path %> | <%= link_to 'Field Displays', field_displays_path %> | <%= link_to 'Textboxes', textboxes_path %> | <%= link_to 'Text Reads', textreads_path %> | <%= link_to 'Record Formats', records_formats_path %> 
 
 <h1><%= @modd_display.header %></h1>
+
 
 <%if ['index', 'show'].include? params[:action]%>
 <%= render partial: "layouts/mvcgui_read" %>
 <%else %>
  <%= render partial: "layouts/mvcgui_write" %>
 <% end%>
+
+
+
 
 
 <%= link_to 'New', get_path('new') %>
@@ -34,18 +38,18 @@
 </pre>
 <hr>record_format.name:
 <%= @record_format.name %>
-<BR> attribs:
-<% @attributes.each do |attribute| %>
-  <br><%= attribute.field %>
+<BR> fields:
+<% @fields.each do |field| %>
+  <br><%= field.field %>
 <% end %>
 
-<hR> attrib id:
-<% @attribute_ids.each do |attribute| %>
-  <br><%= attribute %>
+<hR> field id:
+<% @field_ids.each do |field| %>
+  <br><%= field %>
 <% end %>
-<hR> attrib disp:
-<% @attr_displays.each do |attribute| %>
-  <br><%= attribute.header %>
+<hR> field disp:
+<% @field_disps.each do |field| %>
+  <br><%= field.header %>
 <% end %>
 
 

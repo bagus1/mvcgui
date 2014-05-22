@@ -2,22 +2,22 @@
 <%= form_tag @form_path do |f| %>
   <%=@app_format.app_wrapper.html_safe%>
   <% if @app_format.separate_header_row %>
-    <% @displayable_attributes.each do | displayable_attribute | %>
+    <% @displayable_fields.each do | displayable_field | %>
       <%= @app_format.field_header_wrapper.html_safe%>
-      <%= sortable displayable_attribute[:attribute].field %>
+      <%= sortable displayable_field[:field].field %>
       <%= @app_format.field_header_wrapper_end.html_safe%>
     <% end %>
   <% end %>
 
   <% @models.each do |model| %>
     <%= @app_format.record_wrapper.html_safe%>
-    <% @displayable_attributes.each do | displayable_attribute | %>
+    <% @displayable_fields.each do | displayable_field | %>
       <% if @app_format.app_format == 'profile_table' %>
-        <tr><th><%=displayable_attribute[:attr_display].header %></th><td>
+        <tr><th><%=displayable_field[:field_display].header %></th><td>
       <% end %>
       <%= @app_format.field_wrapper.html_safe%>
       <%# logger.info "bkkkkbkbkbkbkbkbkbkbkbk " + model.inspect %>
-     <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: model} %>
+      <%=render template: displayable_field[:field_display].format.tableize + "/show", locals: {displayable_field: displayable_field, obj: model} %>
       <%= @app_format.field_wrapper_end.html_safe %>
       <% if @app_format.app_format == 'profile_table' %>
         </td>

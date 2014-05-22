@@ -1,3 +1,3 @@
 class Textbox < ActiveRecord::Base
-	scope :by_attribute_display_id, ->(attribute_display_id) { where(attributedisplayid: attribute_display_id)}
+	scope :by_field_display_id, ->(field_display_id) { where(fielddisplayid: field_display_id)}
 end

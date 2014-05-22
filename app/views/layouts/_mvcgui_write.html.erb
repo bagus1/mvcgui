@@ -2,15 +2,15 @@
 
   <%=@app_format.app_wrapper.html_safe%>
   <%= @app_format.record_wrapper.html_safe%>
-  <% @displayable_attributes.each do | displayable_attribute | %>
+  <% @displayable_fields.each do | displayable_field | %>
   beep
     <% if @app_format.app_format == 'profile_table' %>
-      <tr><th><%=displayable_attribute[:attr_display].header %></th>
+      <tr><th><%=displayable_field[:field_display].header %></th>
     <% end %>
     <%= @app_format.field_wrapper.html_safe%>
     <% #logger.info 'forforforforfor' + @model.inspect %>
-    <% logger.info 'gggggggggg ' + displayable_attribute.inspect %>
-    <%=render template: displayable_attribute[:attr_display].format.tableize + "/show", locals: {displayable_attribute: displayable_attribute, obj: @model, mvcgui: @mvcgui} %>
+    <% logger.info 'gggggggggg ' + displayable_field.inspect %>
+    <%=render template: displayable_field[:field_display].format.tableize + "/show", locals: {displayable_field: displayable_field, obj: @model, mvcgui: @mvcgui} %>
     <%= @app_format.field_wrapper_end.html_safe %>
   <%end %>
   <%= @app_format.record_wrapper_end.html_safe%>

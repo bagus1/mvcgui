@@ -8,7 +8,7 @@ ActiveAdmin.register Textbox do
   #
   # or
   #
-  permit_params :attributeDisplayId, :size
+  permit_params :fieldDisplayId, :size
   # permit_params do
   #  permitted = [:permitted, :attributes]
   #  permitted << :other if resource.something?

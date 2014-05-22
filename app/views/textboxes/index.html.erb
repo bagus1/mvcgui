@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Attributedisplayid</th>
+      <th>fieldDisplayId</th>
       <th>Size</th>
       <th></th>
       <th></th>
@@ -14,7 +14,7 @@
   <tbody>
     <% @textboxes.each do |textbox| %>
       <tr>
-        <td><%= textbox.attributeDisplayId %></td>
+        <td><%= textbox.fieldDisplayId %></td>
         <td><%= textbox.size %></td>
         <td><%= link_to 'Show', textbox %></td>
         <td><%= link_to 'Edit', edit_textbox_path(textbox) %></td>

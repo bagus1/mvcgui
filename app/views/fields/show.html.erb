@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Modelid:</strong>
+  <%= @field.modelid %>
+</p>
+
+<p>
+  <strong>Schema:</strong>
+  <%= @field.schema %>
+</p>
+
+<p>
+  <strong>Tablename:</strong>
+  <%= @field.tablename %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @field.field %>
+</p>
+
+<%= link_to 'Edit', edit_field_path(@field) %> |
+<%= link_to 'Back', fields_path %>

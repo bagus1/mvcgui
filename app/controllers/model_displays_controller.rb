@@ -5,7 +5,6 @@ class ModelDisplaysController < ApplicationController
   helper_method :sort_direction, :is_displayable
   before_action :app_init
   before_action ->{ myinit 3 },  only: [:index, :show, :edit, :new]
-  @default_sort = 'modelid'
 
 
   private

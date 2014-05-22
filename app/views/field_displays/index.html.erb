@@ -1,0 +1,34 @@
+<h1>Listing field_displays</h1>
+
+ <%# abort(@field_displays.inspect) %>
+<table>
+  <thead>
+    <tr>
+      <th>Attributeid</th>
+      <th>Format</th>
+      <th>Action</th>
+      <th>Header</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @field_displays.each do |field_display| %>
+      <tr>
+        <td><%= field_display.fieldid %></td>
+        <td><%= field_display.format %></td>
+        <td><%= field_display.action %></td>
+        <td><%= field_display.header %></td>
+        <td><%= link_to 'Show', field_display %></td>
+        <td><%= link_to 'Edit', edit_field_display_path(field_display) %></td>
+        <td><%= link_to 'Destroy', field_display, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Field display', new_field_display_path %>

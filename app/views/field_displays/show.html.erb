@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fieldid:</strong>
+  <%= @field_display.fieldid %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @field_display.format %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @field_display.action %>
+</p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @field_display.header %>
+</p>
+
+<%= link_to 'Edit', edit_field_display_path(@field_display) %> |
+<%= link_to 'Back', field_displays_path %>

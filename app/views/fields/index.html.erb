@@ -1,0 +1,33 @@
+<h1>Listing fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modelid</th>
+      <th>Schema</th>
+      <th>Tablename</th>
+      <th>Field</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fields.each do |field| %>
+      <tr>
+        <td><%= field.modelid %></td>
+        <td><%= field.schema %></td>
+        <td><%= field.tablename %></td>
+        <td><%= field.field %></td>
+        <td><%= link_to 'Show', field %></td>
+        <td><%= link_to 'Edit', edit_field_path(field) %></td>
+        <td><%= link_to 'Destroy', field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Field', new_field_path %>
