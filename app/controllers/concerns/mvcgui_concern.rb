@@ -6,7 +6,7 @@ module MvcguiConcern
     def index
         #seems like you have to have an instance variable for the specific model because if you don't it doesn't pay attention to using your 'layout'
         #so we set one but then for convenience in the layout, we set @models equal to that.
-        #abort("@" + params[:controller].to_s)
+        logger.info ("The instance variable is: @" + params[:controller].to_s)
         instance_variable_set("@" + params[:controller].to_s,  @the_class.order(sort_column + " " + sort_direction))
         #instance_variable_set("@" + params[:controller].to_s,  @the_class.all)
         @models = instance_variable_get("@" + params[:controller].to_s);
@@ -117,7 +117,7 @@ module MvcguiConcern
         logger.info "ddddddddc>>>>>>>>>>>>>>>>>>>>"  + @modd_display.to_s
         
         unless @modd_display
-          return redirect_to(new_model_display_path, :notice => "There was no ModelDisplay for that action/format combo. Would you like to create one?")  
+          return redirect_to(new_model_display_path, :notice => "There was no ModelDisplay for that " + params[:action] +" action and " + @modelid.to_s + "modelid combo. Would you like to create one?")  
         end
         @record_format = RecordsFormat.find(@modd_display.format)
         #include GridHtml

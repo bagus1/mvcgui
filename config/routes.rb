@@ -1,4 +1,8 @@
 Mvcgui::Application.routes.draw do
+  resources :testers
+
+  resources :selects
+
   resources :field_displays
 
   resources :fields

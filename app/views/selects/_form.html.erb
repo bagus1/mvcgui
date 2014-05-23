@@ -1,0 +1,49 @@
+<%= form_for(@select) do |f| %>
+  <% if @select.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@select.errors.count, "error") %> prohibited this select from being saved:</h2>
+
+      <ul>
+      <% @select.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :attributeDisplayId %><br>
+    <%= f.number_field :attributeDisplayId %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.number_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :field %><br>
+    <%= f.number_field :field %>
+  </div>
+  <div class="field">
+    <%= f.label :collection %><br>
+    <%= f.text_field :collection %>
+  </div>
+  <div class="field">
+    <%= f.label :value_method %><br>
+    <%= f.text_field :value_method %>
+  </div>
+  <div class="field">
+    <%= f.label :text_method %><br>
+    <%= f.text_field :text_method %>
+  </div>
+  <div class="field">
+    <%= f.label :data_size %><br>
+    <%= f.number_field :data_size %>
+  </div>
+  <div class="field">
+    <%= f.label :include_blank %><br>
+    <%= f.text_field :include_blank %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ class TextreadsController < ApplicationController
   layout  "mvcgui"
   helper_method :sort_column, :sort_direction, :is_displayable
   before_action :app_init
-  before_action ->{ myinit 2 },  only: [:index, :show, :edit, :new]
+  before_action ->{ myinit 7 },  only: [:index, :show, :edit, :new]
 
 
   private 

@@ -8,8 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'Models', models_path %> | <%= link_to 'Fields', fields_path %> | <%= link_to 'Model Displays', model_displays_path %> | <%= link_to 'Field Displays', field_displays_path %> | <%= link_to 'Textboxes', textboxes_path %> | <%= link_to 'Text Reads', textreads_path %> | <%= link_to 'Record Formats', records_formats_path %> 
+<%= link_to 'Models', models_path %> | <%= link_to 'Fields', fields_path %> | <%= link_to 'Model Displays', model_displays_path %> | <%= link_to 'Field Displays', field_displays_path %> |  <%= link_to 'Record Formats', records_formats_path %> |<%= link_to 'Textboxes', textboxes_path %> | <%= link_to 'Text Reads', textreads_path %> | <%= link_to 'Selects', selects_path %> | <%= link_to 'Testers', testers_path %>  
 
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
 <h1><%= @modd_display.header %></h1>
 
 

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attributedisplayid:</strong>
+  <%= @select.attributeDisplayId %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @select.model %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @select.field %>
+</p>
+
+<p>
+  <strong>Collection:</strong>
+  <%= @select.collection %>
+</p>
+
+<p>
+  <strong>Value method:</strong>
+  <%= @select.value_method %>
+</p>
+
+<p>
+  <strong>Text method:</strong>
+  <%= @select.text_method %>
+</p>
+
+<p>
+  <strong>Data size:</strong>
+  <%= @select.data_size %>
+</p>
+
+<p>
+  <strong>Include blank:</strong>
+  <%= @select.include_blank %>
+</p>
+
+<%= link_to 'Edit', edit_select_path(@select) %> |
+<%= link_to 'Back', selects_path %>

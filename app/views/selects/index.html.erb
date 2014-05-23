@@ -1,0 +1,41 @@
+<h1>Listing selects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attributedisplayid</th>
+      <th>Model</th>
+      <th>Field</th>
+      <th>Collection</th>
+      <th>Value method</th>
+      <th>Text method</th>
+      <th>Data size</th>
+      <th>Include blank</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @selects.each do |select| %>
+      <tr>
+        <td><%= select.attributeDisplayId %></td>
+        <td><%= select.model %></td>
+        <td><%= select.field %></td>
+        <td><%= select.collection %></td>
+        <td><%= select.value_method %></td>
+        <td><%= select.text_method %></td>
+        <td><%= select.data_size %></td>
+        <td><%= select.include_blank %></td>
+        <td><%= link_to 'Show', select %></td>
+        <td><%= link_to 'Edit', edit_select_path(select) %></td>
+        <td><%= link_to 'Destroy', select, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Select', new_select_path %>

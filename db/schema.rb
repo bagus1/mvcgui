@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521225311) do
+ActiveRecord::Schema.define(version: 20140523200921) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140521225311) do
     t.string   "field"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "default_value"
   end
 
   create_table "model_displays", force: true do |t|
@@ -105,6 +106,27 @@ ActiveRecord::Schema.define(version: 20140521225311) do
     t.string   "name"
     t.string   "classname"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "selects", force: true do |t|
+    t.integer  "fieldDisplayId"
+    t.integer  "model"
+    t.integer  "field"
+    t.string   "collection"
+    t.string   "value_method"
+    t.string   "text_method"
+    t.integer  "data_size"
+    t.string   "include_blank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "testers", force: true do |t|
+    t.string   "one"
+    t.string   "two"
+    t.string   "three"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

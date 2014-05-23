@@ -7,6 +7,6 @@ class FieldsController < ApplicationController
  	private
     	# Never trust parameters from the scary internet, only allow the white list through.
     	def _params
-    		params.require(:field).permit(:modelid, :schema, :tablename, :field)
+    		params.require(:field).permit(:modelid, :schema, :tablename, :field, :default_value)
     	end
 end
